@@ -1,0 +1,45 @@
+<html>
+
+<head>
+    Counter Example
+</head>
+
+<body>
+    <div>
+        <input type="button" id="increment" value="+" onclick="window._counter.increment()" />
+        <div id="output"></div>
+        <input type="button" id="decrement" value="-" onclick="window._counter.decrement()" />
+    </div>
+</body>
+
+<script>
+    class Counter {
+        constructor(count) {
+            this._count = count;
+        }
+
+        increment() {
+            this._count++;
+            // updating the UI here is not good
+            // angular makes life easy.
+            window.document.getElementById("output").innerHTML = window._counter.getCount();
+
+        }
+
+        decrement() {
+            this._count--;
+            window.document.getElementById("output").innerHTML = window._counter.getCount();
+
+        }
+
+        getCount() {
+            return this._count;
+        }
+    }
+
+    window._counter = new Counter(0);
+    window.document.getElementById("output").innerHTML = window._counter.getCount();
+
+</script>
+
+</html>
